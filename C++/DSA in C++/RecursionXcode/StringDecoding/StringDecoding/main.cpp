@@ -6,7 +6,7 @@ string append_to_string(char *ptr , string new_str , int no_of_alphabets);
 string append_to_string_times_the_num(string new_str , string old_str , int num);
 string control(char *ptr , char *end_ptr , string full_str);
 int main(){
-    string s = "2[abc]3[cd]1[efs]";
+    string s = "3[ab]2[bc]1[ef]";
 //    char *ptr = &(s[0]);
 //    int num = no_of_alphabets(ptr, nullptr);
 //    string str = append_to_string(&(s[2]), "", num);
