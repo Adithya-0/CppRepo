@@ -64,6 +64,7 @@ string control(char *ptr , char *end_ptr , string full_str){
     }
     else {
         return full_str;
+        
     }
 }
 
