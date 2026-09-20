@@ -6,7 +6,7 @@ string append_to_string(char *ptr , string new_str , int no_of_alphabets);
 string append_to_string_times_the_num(string new_str , string old_str , int num);
 string control(char *ptr , char *end_ptr , string full_str);
 int main(){
-    string s = "3[ab]2[bc]1[ef]";
+    string s = "2[3[ab]]";
 //    char *ptr = &(s[0]);
 //    int num = no_of_alphabets(ptr, nullptr);
 //    string str = append_to_string(&(s[2]), "", num);
@@ -67,5 +67,20 @@ string control(char *ptr , char *end_ptr , string full_str){
         
     }
 }
+
+//string complex_control(char *ptr , char *end_ptr , string full_str , int no_of_left_brack , char *last_left_brack){
+//    if (ptr <= end_ptr){
+//        if ((*ptr) == ']'){
+//            full_str = full_str + control(last_left_brack, end_ptr, full_str);
+//        } else {
+//            if ((*ptr) == '['){
+//                no_of_left_brack++;
+//                last_left_brack = ptr;
+//            }
+//            
+//        }
+//    }
+//    ptr++;
+//}
 
 
