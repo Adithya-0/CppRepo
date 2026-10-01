@@ -1,48 +1,34 @@
 #include "iostream"
 #include "vector"
 using namespace std;
-void moveZeroes (vector<int> &vec);
-int main(){
-    vector <int> vec = {0,1,0,2 ,3 ,0};
-    moveZeroes(vec);
-    for (int i : vec){
-        cout << i << " ";
+void solve() ;
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    int t;
+    cin >> t;
+    while (t--) {
+        solve();
     }
-    cout << endl;
+    return 0;
 }
 
-void moveZeroes (vector<int> &nums){
-    if(nums.size() == 0){
-        return;
+void solve() {
+    int n;
+    cin >> n;
+    int a;
+    vector<int> vec{};
+    int num{};
+    for (int i = 0; i < n ; i++){
+        cin >> a;
+        vec.push_back(a);
     }
-    int zero_ctr{};
-    int *reader = &(nums[0]);
-    int *end_ptr = reader + nums.size() - 1;
-    int *writer = &(nums[0]);
-    while (reader <= end_ptr){
-        if (*reader == 0){
-            if (reader == end_ptr){
-                zero_ctr++;
-                break;
-            }
-            reader++;
-            zero_ctr++;
-        } else {
-            *writer = *reader;
-            writer++;
-            reader++;
+    for(int i = 0 ; i < n -1 ; i++){
+        if(vec[i] != vec[i+1] - 1){
+            num++;
         }
     }
-    while (writer <= end_ptr){
-        *writer = 0;
-        writer++;
-    }
-    if(nums.size() == zero_ctr){
-        return;
-    }
-//    for (int i = static_cast <int> (nums.size())-1 ; i >= (nums.size() - zero_ctr) ; i--){
-//        nums[i] = 0;
-//    }
-
-    }
+    cout <<  num << endl;
+}
    
