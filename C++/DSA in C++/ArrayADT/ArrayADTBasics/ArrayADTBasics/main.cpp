@@ -13,12 +13,31 @@ struct Array{
     int length; // ---> How many variables are currently in the array
 };
 void my_insert(int index , int value , Array arr){
-    if(index < arr.size and index < arr.length){
-        for(int i = arr.length ; i>=index ; i--){
-            *(arr.A + i) = *(arr.A + i -1);
+    if(index >=0 and index < arr.size){
+        if(index < arr.size and index < arr.length){
+            for(int i = arr.length ; i>=index ; i--){
+                *(arr.A + i) = *(arr.A + i -1);
+            }
+            *(arr.A + index) = value;
+            arr.length++;
         }
-        *(arr.A + index) = value;
-        arr.length++;
+    }
+  
+}
+
+void my_delete(int index , Array arr){
+    if(index > arr.length){
+        return;
+    }
+    for(int i = index ; i < arr.length ; i++){
+        *(arr.A + i) = *(arr.A + i + 1);
+        
+    }
+    arr.length--;
+}
+void display(Array arr){
+    for(int i = 0 ; i < arr.size ; i++){
+        cout << *(arr.A + i) << endl;
     }
 }
 int main(int argc, const char * argv[]) {
@@ -40,9 +59,7 @@ int main(int argc, const char * argv[]) {
     cout << "=========" << endl;
     cout << "Displaying the array" << endl;
     
-    for(int i = 0 ; i < arr.size ; i++){
-        cout << *(arr.A + i) << endl;
-    }
+    display(arr);
     
     cout << "Enter an element to be appended to the array" << endl;
     cin >> current_element;
@@ -51,14 +68,17 @@ int main(int argc, const char * argv[]) {
     cout << "Displaying the array " << endl;
     cout << "=======================" << endl;
     
-    for(int i = 0 ; i < arr.size ; i++){
-        cout << *(arr.A + i) << endl;
-    }
+    display(arr);
     arr.length++;
     my_insert(4, 15, arr);
     
-    cout << "====================" << endl;
-    for(int i = 0 ; i < arr.size ; i++){
-        cout << *(arr.A + i) << endl;
-    }
+    cout << "Displaying the array " << endl;
+    cout << "=======================" << endl;
+    display(arr);
+    
+    my_delete(3, arr);
+    cout << "Displaying the array " << endl;
+    cout << "=======================" << endl;
+    display(arr);
+    
 }

@@ -1,11 +1,13 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <cmath>
+#include <algorithm>
 
 using namespace std;
 
 void solve();
-
+int gcd(int num1 , int num2);
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
@@ -20,45 +22,28 @@ int main() {
 }
 
 void solve() {
-    int n{};
+    int count{};
+    int n;
     cin >> n;
-
-    string str1{};
-    cin >> str1;
-    string str2{};
-    cin >> str2;
-
-    bool possible = false;
-    int no_of_1s = 0;
-    int no_of0s = 0;
-
-    for (int i = 0; i < n; i++) {
-        if (str1[i] == '0') {
-            no_of0s++;
-        } else {
-            no_of_1s++;
-        }
-    }
-
-    for (int i = 0; i < n; i++) {
-        if (i == n - 1 && ((str2[i] == '0' && no_of_1s >= 2) || (str2[i] == '1' && no_of0s >= 2))) {
-            possible = true;
-        }
-
-        if (str1[i] == '1' && str2[i] == '0') {
-            if (no_of_1s >= 2) {
-                no_of_1s -= 2;
+    for(int i = 1 ; i <= n ; i++){
+        for(int j = 1 ; j<=i;j++ ){
+            if(j < i){
+                if(gcd(i, j) == abs(i-j)){
+                    count++;
+                }
             }
-        } else if (str1[i] == '0' && str2[i] == '1') {
-            if (no_of0s >= 2) {
-                no_of0s -= 2;
-            }
+            
         }
     }
+    cout << count << "\n";
+}
 
-    if (possible) {
-        cout << "YES\n";
-    } else {
-        cout << "NO\n";
+int gcd(int num1 , int num2){
+    int gcd{};
+    for(int i = 1 ; i <= min(num1,num2) ; i++){
+        if(num1 % i == 0 and num2 % i ==0){
+            gcd = i;
+        }
     }
+    return gcd;
 }
