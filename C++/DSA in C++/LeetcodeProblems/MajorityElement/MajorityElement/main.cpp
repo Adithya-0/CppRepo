@@ -3,6 +3,7 @@
 #include <string>
 #include <cmath>
 #include <algorithm>
+#include <iomanip>
 
 using namespace std;
 
@@ -13,6 +14,7 @@ int main() {
     cin.tie(NULL);
 
     int t;
+    
     if (cin >> t) {
         while (t--) {
             solve();
@@ -21,29 +23,28 @@ int main() {
     return 0;
 }
 
-void solve() {
-    int count{};
-    int n;
-    cin >> n;
-    for(int i = 1 ; i <= n ; i++){
-        for(int j = 1 ; j<=i;j++ ){
-            if(j < i){
-                if(gcd(i, j) == abs(i-j)){
-                    count++;
-                }
-            }
-            
-        }
-    }
-    cout << count << "\n";
+unsigned long long calculateSn(unsigned long long n) {
+
+    unsigned long long interior = (n * n) - (3 * n) + 8;
+    return (n * interior) / 6;
 }
 
-int gcd(int num1 , int num2){
-    int gcd{};
-    for(int i = 1 ; i <= min(num1,num2) ; i++){
-        if(num1 % i == 0 and num2 % i ==0){
-            gcd = i;
+unsigned long long findNFromHugeSum(unsigned long long targetSn) {
+    unsigned long long low = 1;
+    unsigned long long high = 3000000000ULL; // Safe upper bound for cubic root of 6 * 10^18
+    unsigned long long ans = 0;
+
+    while (low <= high) {
+        unsigned long long mid = low + (high - low) / 2;
+        unsigned long long currentSn = calculateSn(mid);
+
+        if (currentSn <= targetSn) {
+            ans = mid;        // This is the largest 'n' where the sum is <= targetSn
+            low = mid + 1;    // Try to find if it exactly matches or goes closer
+        } else {
+            high = mid - 1;
         }
     }
-    return gcd;
+    return ans;
 }
+

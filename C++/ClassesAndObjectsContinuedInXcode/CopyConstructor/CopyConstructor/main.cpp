@@ -27,6 +27,7 @@ Player::Player(const Player &source)
 Player::Player(string name_val , int health_val , int xp_val)
     :name{name_val} , health{health_val} , xp{xp_val}{
 }
+// When an object is being copied, the Default constructor wont be called, but the copy constructor will be called
 string Player::returnName(){
     return name;
 }

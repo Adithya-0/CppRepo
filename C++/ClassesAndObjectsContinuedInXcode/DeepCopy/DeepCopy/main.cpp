@@ -29,7 +29,9 @@ Deep::Deep(const Deep &source){
     *data = *(source.data);
     cout << "Copy constructor - deep" << endl;
 }
-
+//When an object is being copied, the Default constructor wont be called, but only the copy constructor will be called, hence the line on 28 where we are intializing the variable data.
+//So with the deep copy, the original object's data pointer and the copied object's data pointer are pointing to 2 different locations, but the value stored in the locations they are pointing to will be same
+// Dereferencing one object's pointer and altering the value stored, will not affect the value stored in the other object's pointer
 Deep::~Deep() {
     delete data;
     cout << "Destructor freeing data" << endl;
