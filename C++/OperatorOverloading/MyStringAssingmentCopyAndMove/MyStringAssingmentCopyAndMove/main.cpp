@@ -12,8 +12,8 @@ using namespace std;
 int main(int argc, const char * argv[]) {
     Mystring a {"Hi"};
     Mystring b; // No args constructor gets called
-    b = a;
-    b = "This is a test"; // Temporary object is created whose str attribute is "This is a test" and then the assignemnt happens as usual
+    b = a; // Copy = operator method will be called
+    b = "This is a test"; // Move = operator method will be called
     b.display();
     Mystring c;
     c = Mystring("Adithya"); // Here, a temporary object whose str value is "Adithya" will be created
